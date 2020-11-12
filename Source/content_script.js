@@ -38,13 +38,24 @@ function walk(node)
 function handleText(textNode) 
 {
 	var v = textNode.nodeValue;
-
-	v = v.replace(/\bThe Cloud\b/g, "My Butt");
-	v = v.replace(/\bThe cloud\b/g, "My butt");
-	v = v.replace(/\bthe Cloud\b/g, "my Butt");
-	v = v.replace(/\bthe cloud\b/g, "my butt");
+	let regex = /([t|T]he) ['"]*([c|C]loud)['"]*/g;
+	v = v.replace(regex, replaceCloud);
 	
 	textNode.nodeValue = v;
 }
 
+function replaceCloud(match, g1, g2) {	//replaces groups, retains quotes
+	if(g1.substr(0,1)=='T')
+		match = match.replace(g1,"My"); 
+	else
+		match = match.replace(g1,"my"); 
 
+	if(g2.substr(0,1)=='C')
+		match = match.replace(g2,"Butt"); 
+	else
+		match = match.replace(g2,"butt");
+  
+	return match 
+}
+
+//TODO expand for phrases like "cloud computing", use more elegant way to account for capitalization
