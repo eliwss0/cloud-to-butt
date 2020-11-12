@@ -1,38 +1,26 @@
 cloud-to-butt
 =============
 
+Fork of panicsteve's [original extension](https://github.com/panicsteve/cloud-to-butt)
+
 ![](logo.png)
 
-Chrome extension that replaces occurrences of 'the cloud' with 'my butt'
+Firefox web extension that replaces occurrences of 'the cloud' with 'my butt'
 
-[Direct download of crx file](https://github.com/panicsteve/cloud-to-butt/blob/master/CloudToButt.crx?raw=true)
-
-Note that there are forks of this extension that simply replace 'cloud' with 'butt'.
-In my personal opinion, that approach is too broad and it's less funny as a result, but it is clearly a very
-polarizing issue in the cloud-to-butt user community.  Forks are free to do whatever they like.  But officially, _this_ extension replaces only the phrase described above, and therefore it did not replace your cloudflare URLs with buttflare URLs. Thank you for your concern.
-
-Screenshot Gallery
-------------------
-
-http://www.flickr.com/groups/cloud-to-butt/
+[Direct download of crx file](https://github.com/eliwss0/cloud-to-butt/blob/master/CloudToButt.xpi?raw=true)
 
 Installation
 ------------
 
-In Chrome, choose Window > Extensions.  Drag CloudToButt.crx into the page that appears.
+In Firefox, go to Addons->Extensions->cog->"Install Addon From File"
 
-Safari Version
---------------
+Changes vs original extension
+------------
 
-Can be found here: https://github.com/logancollins/cloud-to-butt-safari
+* Accounted for quotes in "cloud"
+* Built for Firefox (can likely be built from source as is for Chrome)
 
-Firefox Version
----------------
+Planned
+------------
 
-Can be found here: https://github.com/DaveRandom/cloud-to-butt-mozilla
-
-
-Opera Version
----------------
-
-Can be found here: https://github.com/DaveRandom/cloud-to-butt-opera
+* Include other tech buzzword replacements in a similar style (Blockchain, AI, IoT, Quantum Computing, etc)
