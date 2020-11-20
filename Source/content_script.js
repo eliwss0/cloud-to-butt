@@ -1,10 +1,5 @@
-walk(document.body);
-
-function walk(node) 
-{
-	// I stole this function from here:
-	// http://is.gd/mwZp7E
-	
+function walk(node) {	// panicsteve stole this function from here:
+						// http://is.gd/mwZp7E
 	var child, next;
 	
 	var tagName = node.tagName ? node.tagName.toLowerCase() : "";
@@ -15,14 +10,12 @@ function walk(node)
 		return;
 	}
 
-	switch ( node.nodeType )  
-	{
+	switch ( node.nodeType )  {
 		case 1:  // Element
 		case 9:  // Document
 		case 11: // Document fragment
 			child = node.firstChild;
-			while ( child ) 
-			{
+			while ( child ) {
 				next = child.nextSibling;
 				walk(child);
 				child = next;
@@ -35,27 +28,33 @@ function walk(node)
 	}
 }
 
-function handleText(textNode) 
-{
+function handleText(textNode) {
 	var v = textNode.nodeValue;
-	let regex = /([t|T]he) ['"]*([c|C]loud)['"]*/g;
-	v = v.replace(regex, replaceCloud);
-	
+
+	var phraseDictRegex = new Map ([
+		[/(the) (cloud)/g, "my butt"],
+		[/(cloud) (computing)/g, "butt computing"],
+		[/(blockchain)/g, "buttchain"],
+		[/(artificial) (intelligence)/g, "artificial butt"],
+		[/(internet) (of) (things)/g, "internet of thongs"],
+		[/(quantum) (computing)/g, "quantum farting"],
+		[/(The) (cloud)/g, "My butt"],
+		[/(Cloud) (computing)/g, "Butt computing"],
+		[/(Blockchain)/g, "Buttchain"],
+		[/(Artificial) (intelligence)/g, "Artificial butt"],
+		[/(Internet) (of) (things)/g, "Internet of thongs"],
+		[/(Quantum) (computing)/g, "Quantum farting"]
+	]);
+
+	const iter1=phraseDictRegex.keys();
+	const iter2=phraseDictRegex.values();
+
+	for(var i=0;i<phraseDictRegex.size;i++)
+		v=v.replace(iter1.next().value,iter2.next().value);
+
 	textNode.nodeValue = v;
 }
 
-function replaceCloud(match, g1, g2) {	//replaces groups, retains quotes
-	if(g1.substr(0,1)=='T')
-		match = match.replace(g1,"My"); 
-	else
-		match = match.replace(g1,"my"); 
+walk(document.body);
 
-	if(g2.substr(0,1)=='C')
-		match = match.replace(g2,"Butt"); 
-	else
-		match = match.replace(g2,"butt");
-  
-	return match 
-}
-
-//TODO expand for phrases like "cloud computing", use more elegant way to account for capitalization
+//TODO use more elegant way to account for capitalization
